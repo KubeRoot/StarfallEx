@@ -4,22 +4,22 @@
 
 
 surface.CreateFont( "SF_PermissionsWarning", {
-	font = "roboto", -- Use the font-name which is shown to you by your operating system Font Viewer, not the file name
+	font = "roboto",
 	size = 16,
 } )
 
 surface.CreateFont( "SF_PermissionName", {
-	font = "roboto", -- Use the font-name which is shown to you by your operating system Font Viewer, not the file name
+	font = "roboto",
 	size = 20,
 } )
 
 surface.CreateFont( "SF_PermissionDesc", {
-	font = "roboto", -- Use the font-name which is shown to you by your operating system Font Viewer, not the file name
+	font = "roboto",
 	size = 18,
 } )
 
 surface.CreateFont( "SF_PermissionsTitle", {
-	font = "roboto", -- Use the font-name which is shown to you by your operating system Font Viewer, not the file name
+	font = "roboto",
 	size = 20,
 } )
 
