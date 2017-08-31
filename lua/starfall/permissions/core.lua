@@ -31,7 +31,10 @@ end
 -- @param key a string identifying the action being performed
 -- @return boolean whether the action is permitted
 function P.check (principal, target, key)
-
+--[[	local overrides = SF.instance.permissionOverrides
+	if overrides and overrides[key] then
+		return
+	end]]
 	for _, provider in ipairs(P.providers) do
 		local setting = provider.settings[key]
 		if setting then
@@ -49,7 +52,10 @@ function P.check (principal, target, key)
 end
 
 function P.hasAccess (principal, target, key)
-
+--[[	local overrides = SF.instance.permissionOverrides
+	if overrides and overrides[key] then
+		return true
+	end]]
 	for _, provider in ipairs(P.providers) do
 		local setting = provider.settings[key]
 		if setting then
@@ -61,7 +67,7 @@ function P.hasAccess (principal, target, key)
 			end
 		end
 	end
-	
+
 	return true
 end
 
@@ -166,7 +172,7 @@ if SERVER then
 	net.Receive("sf_permissionsettings", function(len, ply)
 		if ply:IsSuperAdmin() then
 			net.Start("sf_permissionsettings")
-			
+
 			net.WriteUInt(#P.providers, 8)
 			for _, v in ipairs(P.providers) do
 				net.WriteString(v.id)
@@ -183,7 +189,7 @@ if SERVER then
 					net.WriteUInt(setting, 8)
 				end
 			end
-			
+
 			net.Send(ply)
 		end
 	end)

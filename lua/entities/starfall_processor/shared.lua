@@ -115,6 +115,16 @@ local function MenuOpen( ContextMenu, Option, Entity, Trace )
 		function( )
 			Entity:Terminate()
 		end )
+	if Entity.instance.permissionsOverrideRequests then
+		SubMenu:AddOption( "Open Chip Permissions",
+			function( )
+				local pnl = vgui.Create("SFChipPermissions")
+				if pnl then
+					pnl:OpenForChip(Entity)
+				end
+			end )
+
+	end
 	SubMenu:AddOption( "Open Global Permissions",
 		function( )
 			SF.Editor.openPermissionsPopup()
